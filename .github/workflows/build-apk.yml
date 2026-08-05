@@ -20,20 +20,26 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Grant Permission & Build Directly
+      - name: Find and Build APK
         run: |
-          chmod +x gradlew
-          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          # البحث التلقائي عن ملف التشغيل في أي مجلد فرعي ومنحه الصلاحيات
+          GRADLEW_PATH=$(find . -name "gradlew" -type f)
+          if [ -z "$GRADLEW_PATH" ]; then
+            echo "Error: gradlew not found!"
+            exit 1
+          fi
+          
+          DIR_PATH=$(dirname "$GRADLEW_PATH")
+          echo "Found gradlew at: $DIR_PATH"
+          
+          chmod +x "$GRADLEW_PATH"
+          echo "sdk.dir=$ANDROID_HOME" > "$DIR_PATH/local.properties"
+          
+          cd "$DIR_PATH"
           ./gradlew assembleDebug --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug-apk
-          path: app/build/outputs/apk/debug/app-debug-apk.apk
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-debug-apk
-          path: app/build/outputs/apk/debug/app-debug-apk.apk
+          path: '**/build/outputs/apk/debug/*.apk'
