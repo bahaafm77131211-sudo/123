@@ -20,14 +20,17 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Create Fresh Gradle Project & Build
+      - name: Fix Properties & Build
         run: |
-          # إنشاء مشروع جديد متوافق تلقائياً لتوليد ملفات التشغيل المفقودة
+          # إزالة أي خيار قديم مرفوض من إصدار الإضافات الحديث
+          if [ -f "gradle.properties" ]; then
+            sed -i '/android.defaults.buildfeatures.buildconfig/d' gradle.properties
+          fi
+          
           gradle wrapper --gradle-version 8.5
           chmod +x gradlew
           echo "sdk.dir=$ANDROID_HOME" > local.properties
           
-          # بناء المشروع
           ./gradlew assembleDebug --no-daemon
 
       - name: Upload APK
