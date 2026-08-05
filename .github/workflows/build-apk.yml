@@ -20,22 +20,14 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Find and Build APK
+      - name: Create Fresh Gradle Project & Build
         run: |
-          # البحث التلقائي عن ملف التشغيل في أي مجلد فرعي ومنحه الصلاحيات
-          GRADLEW_PATH=$(find . -name "gradlew" -type f)
-          if [ -z "$GRADLEW_PATH" ]; then
-            echo "Error: gradlew not found!"
-            exit 1
-          fi
+          # إنشاء مشروع جديد متوافق تلقائياً لتوليد ملفات التشغيل المفقودة
+          gradle wrapper --gradle-version 8.5
+          chmod +x gradlew
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
           
-          DIR_PATH=$(dirname "$GRADLEW_PATH")
-          echo "Found gradlew at: $DIR_PATH"
-          
-          chmod +x "$GRADLEW_PATH"
-          echo "sdk.dir=$ANDROID_HOME" > "$DIR_PATH/local.properties"
-          
-          cd "$DIR_PATH"
+          # بناء المشروع
           ./gradlew assembleDebug --no-daemon
 
       - name: Upload APK
