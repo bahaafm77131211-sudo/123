@@ -20,14 +20,14 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Fix Properties & Build
+      - name: Fix Properties & Build with Gradle 9.3.1
         run: |
-          # إزالة أي خيار قديم مرفوض من إصدار الإضافات الحديث
           if [ -f "gradle.properties" ]; then
             sed -i '/android.defaults.buildfeatures.buildconfig/d' gradle.properties
           fi
           
-          gradle wrapper --gradle-version 8.5
+          # استخدام الإصدار 9.3.1 المطلوب بالتمام والكمال
+          gradle wrapper --gradle-version 9.3.1
           chmod +x gradlew
           echo "sdk.dir=$ANDROID_HOME" > local.properties
           
