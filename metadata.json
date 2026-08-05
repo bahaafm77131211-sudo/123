@@ -1,0 +1,8 @@
+{
+  "name": "تكسي جبلة",
+  "description": "تطبيق طلب تكسي جبلة يوفر خدمة حجز سهلة وسريعة مع تتبع مباشر للرحلات واشعارات فورية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

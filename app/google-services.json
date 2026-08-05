@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "585601737673",
+    "project_id": "taxi-jebala-ba2e0",
+    "storage_bucket": "taxi-jebala-ba2e0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585601737673:android:fba804a561b47e8f38fe18",
+        "android_client_info": {
+          "package_name": "com.soukjableh.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzpbyPVmlFVXAbWU4v_6Ps93ECLeRQN48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

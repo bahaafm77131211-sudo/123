@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تكسي جبلة</string>
+    <string name="pickup_label">موقع الانطلاق</string>
+    <string name="destination_label">وجهة الوصول</string>
+    <string name="book_now">طلب تكسي الآن</string>
+    <string name="confirm_booking">تأكيد حجز الرحلة</string>
+    <string name="searching_driver">جاري البحث عن سائق قريب…</string>
+    <string name="driver_found">تم العثور على سائق!</string>
+    <string name="driver_on_way">السائق في طريقه إليك</string>
+    <string name="driver_arrived">لقد وصل السائق! بانتظارك في الخارج.</string>
+    <string name="trip_in_progress">الرحلة مستمرة الآن…</string>
+    <string name="trip_completed">لقد وصلت إلى وجهتك بسلام!</string>
+    <string name="ride_history">سجل الرحلات</string>
+    <string name="home">الرئيسية</string>
+    <string name="driver_info">بيانات السائق</string>
+    <string name="chat_with_driver">مراسلة</string>
+    <string name="call_driver">اتصال</string>
+    <string name="eta">الوقت المقدر</string>
+    <string name="price">التكلفة المتوقعة</string>
+    <string name="currency">د.ع</string>
+    <string name="km">كم</string>
+    <string name="mins">دقيقة</string>
+    <string name="cancel_ride">إلغاء الرحلة</string>
+</resources>
