@@ -1,4 +1,4 @@
-name: Build APK Ultra Safe
+name: Ultimate APK Builder
 
 on:
   push:
@@ -20,20 +20,17 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Generate or Fix Gradle Wrapper
+      - name: Grant Permission & Build Directly
         run: |
-          if [ ! -f "gradlew" ]; then
-            gradle wrapper
-          fi
           chmod +x gradlew
-
-      - name: Fix Android SDK / Local Properties
-        run: |
           echo "sdk.dir=$ANDROID_HOME" > local.properties
+          ./gradlew assembleDebug --no-daemon
 
-      - name: Clean and Build APK (Debug)
-        run: |
-          ./gradlew clean assembleDebug --stacktrace --no-daemon
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: app/build/outputs/apk/debug/app-debug-apk.apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
